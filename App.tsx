@@ -35,7 +35,7 @@ const LoginScreen: React.FC<{ onLogin: () => void }> = ({ onLogin }) => {
                 <div className="bg-gradient-to-tr from-cyan-500 to-blue-600 p-4 rounded-2xl mb-6 shadow-lg shadow-cyan-500/30 rotate-3 hover:rotate-6 transition-transform">
                     <Lock className="w-8 h-8 text-white" />
                 </div>
-                <h1 className="text-3xl font-bold text-white mb-2 tracking-tight">ArtFlow Studio</h1>
+                <h1 className="text-3xl font-bold text-white mb-2 tracking-tight">ArtFlow AI Studio</h1>
                 <p className="text-slate-400 text-sm font-medium tracking-wide">AKSES KEAMANAN DIPERLUKAN</p>
             </div>
 
