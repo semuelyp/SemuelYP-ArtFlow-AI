@@ -2,6 +2,7 @@ import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
+// Explicitly using Gemini 2.5 Flash Image as requested
 const MODEL_NAME = 'gemini-2.5-flash-image';
 
 /**
@@ -33,15 +34,16 @@ export const editImage = async (
   try {
     const source = parseImage(sourceImage);
 
-    // Updated guidelines to support Indonesian input implicitly and ensures quality
+    // Optimized prompt for Gemini 2.5 Flash Image capabilities
     const prompt = `
       Task: Edit the provided image according to the following instruction: "${instruction}".
       
       Guidelines:
       1. The instruction might be in English or Indonesian (Bahasa Indonesia). Process it accurately.
-      2. If the instruction is an action (e.g., "eating", "makan", "sleeping", "tidur"), modify the subject's pose and context to perform that action naturally.
-      3. Maintain the subject's identity, facial features, and the general style of the original photo as much as possible, unless the instruction implies changing them.
-      4. Return ONLY the edited image.
+      2. If the instruction is an action (e.g., "eating", "makan", "sleeping", "tidur"), modify the subject's pose and context to perform that action naturally while preserving the subject's identity.
+      3. For general edits, strictly follow the visual changes described (e.g., lighting, background, style).
+      4. Ensure the output is high-quality and photorealistic unless specified otherwise.
+      5. Return ONLY the edited image.
     `;
 
     const response = await ai.models.generateContent({
